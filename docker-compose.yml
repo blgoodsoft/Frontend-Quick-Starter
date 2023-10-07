@@ -1,0 +1,15 @@
+version: '3.8'
+
+services:
+  app:
+    image: 'starter/node:alpine'
+    container_name: ${QS_APPNAME:-starter_app}
+    build:
+      context: .
+      dockerfile: dockerconfig/Dockerfile
+    environment:
+      - UID=${QS_UID:-1000}
+    ports:
+      - ${QS_PORT:-3000}:${QS_PORT:-3000}
+    volumes:
+        - ./${QS_APPNAME:-app}:/app
