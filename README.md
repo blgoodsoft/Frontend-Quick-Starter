@@ -1,10 +1,10 @@
-# Frontend Quick Starter Project
+# Frontend Quick Starter
 
 This project provides an easy way to quickly start a Docker container tailored for fast prototyping of frontend projects.
 
 ## Requirements
 
-- Docker
+- [Docker](https://www.docker.com/products/docker-desktop/)
 
 ## Getting Started
 
