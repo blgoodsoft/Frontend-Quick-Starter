@@ -55,7 +55,6 @@ start_browser () {
 }
 
 while true; do
-    # Adjust the grep string if the container name differs
     if docker logs ${QS_APPNAME} 2>&1 | grep -q "http://localhost:${QS_PORT:-3000}"; then
         start_browser
         break
