@@ -29,7 +29,7 @@ if [[ "$OSTYPE" != "cygwin" || "$OSTYPE" != "msys" || "$OSTYPE" != "win32" ]]; t
 
     export QS_APPNAME=$(grep '^APPNAME=' $SCRIPT_PATH/setting.ini | cut -d'=' -f2)
     export QS_PORT=$APORT
-    export QS_UID=$(id -u)    
+    export QS_UID=$(id -u)
 fi
 
 QS_REBUILD=$(grep '^REBUILD=' $SCRIPT_PATH/setting.ini | cut -d'=' -f2)
