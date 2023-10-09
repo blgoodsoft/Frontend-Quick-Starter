@@ -33,7 +33,7 @@ if [[ "$OSTYPE" != "cygwin" || "$OSTYPE" != "msys" || "$OSTYPE" != "win32" ]]; t
 fi
 
 QS_REBUILD=$(grep '^REBUILD=' $SCRIPT_PATH/setting.ini | cut -d'=' -f2)
-if [[ ${QS_PORT:-false} == true ]]; then
+if [[ ${QS_REBUILD:-false} == true ]]; then
     docker compose -f $SCRIPT_PATH/docker-compose.yml build
 fi
 
