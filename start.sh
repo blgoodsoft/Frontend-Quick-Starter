@@ -37,7 +37,18 @@ if [[ ${QS_REBUILD:-false} == true ]]; then
     docker compose -f $SCRIPT_PATH/docker-compose.yml build
 fi
 
-docker compose -f $SCRIPT_PATH/docker-compose.yml up -d
+SERVICE_NAME="app" # Replace with your service's name
+
+status=$(docker-compose ps -q $SERVICE_NAME)
+
+# Check if the container is running
+if [[ -z "$status" ]]; then
+    docker compose -f $SCRIPT_PATH/docker-compose.yml up -d
+else
+   docker compose -f $SCRIPT_PATH/docker-compose.yml down --rmi local --volumes
+   echo "The Docker container is shut down"
+   exit 1
+fi
 
 start_browser () {
     URL="http://localhost:$APORT"
