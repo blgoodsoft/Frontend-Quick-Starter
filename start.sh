@@ -65,16 +65,20 @@ start_browser () {
     fi
 }
 
-while true; do
-    if docker logs ${QS_APPNAME} 2>&1 | grep -q "http://localhost:${QS_PORT:-3000}"; then
-        start_browser
-        break
-    else
-        echo "Loading..."
-        sleep 3
-    fi
-done
-
+QS_START_DEV_SERVER=$(grep '^START_DEV_SERVER=' $SCRIPT_PATH/setting.ini | cut -d'=' -f2)
+if [[ ${QS_START_DEV_SERVER:-true} == true ]]; then
+    while true; do
+        if docker logs ${QS_APPNAME} 2>&1 | grep -q "http://localhost:${QS_PORT:-3000}"; then
+            start_browser
+            break
+        else
+            echo "Loading..."
+            sleep 3
+        fi
+    done
+else
+    echo "Container is ready"
+fi
 
 
 
